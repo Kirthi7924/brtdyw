@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffebcd;
+        }
+        h1 {
+            color: #ff4500;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .gallery img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+        .confetti {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>ಹುಟ್ಟು ಹಬ್ಬದ ಶುಭಾಶಯಗಳು "ಕೃತಿ" 😉🫣</h1>
+    <p class="message">ಕೋತಿ ಆಟ ಬಿಡು. ದೇವ್ರು ಒಳ್ಳೆ ಬುದ್ದಿ ಕೊಡ್ಲಿ 🎉🎂</p>
+    
+    <div class="gallery">
+        <img src="IMG_20241125_143016.jpg" alt="Photo 1">
+        <img src="IMG_20241113_170954.jpg" alt="Photo 2">
+        <img src="20250322_150247.jpg" alt="Photo 3">
+        <img src="20250227_132810_003.jpg" alt="Photo 4">
+        <img src="20250322_153338.jpg" alt="Photo 2">
+        <img src="IMG_20240121_132443.jpg" alt="Photo 3">
+        <img src="IMG_20240217_175233.jpg" alt="Photo 4">
+        <img src="20250227_133058.jpg" alt="Photo 1">
+        <img src="IMG_20240327_000244.jpg" alt="Photo 2">
+        <img src="IMG_20240327_131837.jpg" alt="Photo 3">
+        <img src="IMG_20240618_144310.jpg" alt="Photo 4">
+        <img src="IMG_20240905_080532.jpg" alt="Photo 1">
+        <img src="IMG_20240327_131318.jpg" alt="Photo 2">
+        <img src="IMG_20241112_181430.jpg" alt="Photo 3">
+        <img src="IMG-20240626-WA0115.jpg" alt="Photo 4">
+        <img src="IMG_20241113_170954.jpg" alt="Photo 1">
+        <img src="IMG_20241125_143016.jpg" alt="Photo 2">
+        <img src="IMG_20250322_145835.jpg" alt="Photo 3">
+        <img src="IMG_20250322_153155.jpg" alt="Photo 4">
+    </div>
+    
+    <canvas class="confetti"></canvas>
+    
+    <script>
+        // Confetti Effect
+        const canvas = document.querySelector('.confetti');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let particles = [];
+        function createParticles() {
+            for (let i = 0; i < 100; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    r: Math.random() * 5 + 2,
+                    d: Math.random() * 2 + 1
+                });
+            }
+        }
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "rgba(255, 0, 0, 0.8)";
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fill();
+                p.y += p.d;
+                if (p.y > canvas.height) p.y = 0;
+            });
+            requestAnimationFrame(drawParticles);
+        }
+        createParticles();
+        drawParticles();
+    </script>
+</body>
+</html>
